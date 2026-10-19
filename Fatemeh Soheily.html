@@ -1,0 +1,780 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Fatemeh Soheily</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Fatemeh Soheily, product designer in digital banking, applying to research master's programs in Human-Computer Interaction.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Sora:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=Vazirmatn:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: one reading column with a narrow left rail of section names on wide screens;
+   left-aligned throughout. The hero is a mirrorable grid that flips LTR <-> RTL. */
+/* Direction: a dark instrument panel. Ice cyan and lilac light the page from a live
+   network field in the hero; everything else is glass panels on deep graphite.
+   Single dark look by choice. */
+:root {
+  --bg: #141A26;
+  --surface: #1B2231;
+  --ink: #E7EDF6;
+  --muted: #8F9BB0;
+  --line: rgba(150, 180, 230, 0.16);
+  --rule: rgba(150, 180, 230, 0.30);
+  --accent: #7FE3F2;      /* ice cyan */
+  --accent-soft: rgba(127, 227, 242, 0.07);
+  --aqua: rgba(127, 227, 242, 0.12);
+  --sage: #B49CFF;        /* lilac, second light */
+  --sage-soft: rgba(180, 156, 255, 0.07);
+  --ok: #6EE7B7;
+  --ok-soft: rgba(110, 231, 183, 0.10);
+  --warn: #F5C26B;
+  --bad: #FF8F8F;
+  --hero: #141A26;
+  --on-hero: #E7EDF6;
+  --on-hero-muted: #8F9BB0;
+  --on-hero-strong: #7FE3F2;
+  --glow: 0 0 0 1px rgba(127, 227, 242, 0.10), 0 20px 60px -30px rgba(127, 227, 242, 0.35);
+
+  --f-name: "Unbounded", "Arial Black", sans-serif;
+  --f-display: "Sora", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-fa: "Vazirmatn", Tahoma, sans-serif;
+
+  --s1: 4px; --s2: 8px; --s3: 16px; --s4: 24px; --s5: 40px; --s6: 64px; --s7: 104px;
+  --measure: 64ch;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 var(--s6);
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--bg);
+}
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.1; }
+p { margin: 0; }
+.fa { font-family: var(--f-fa); }
+
+.wrap { max-width: 1120px; margin: 0 auto; }
+
+/* ---------- header ---------- */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); padding-block: 14px; }
+.mark { font-family: var(--f-display); font-weight: 700; font-size: 16px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+.top nav { display: flex; gap: var(--s4); flex-wrap: wrap; }
+.top nav a { font-family: var(--f-display); font-size: 15px; color: var(--muted); text-decoration: none; }
+.top nav a:hover, .top nav a.on { color: var(--ink); }
+@media (max-width: 720px) { .top nav { display: none; } }
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative; isolation: isolate;
+  padding-block: var(--s7) var(--s6);
+  color: var(--on-hero);
+  border-bottom: 1px solid var(--line);
+}
+.hero::after {
+  content: ""; position: absolute; z-index: -2; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%);
+  background:
+    radial-gradient(60% 70% at 18% 20%, rgba(127, 227, 242, 0.13), transparent 70%),
+    radial-gradient(50% 60% at 85% 75%, rgba(180, 156, 255, 0.14), transparent 70%);
+  pointer-events: none;
+}
+#field { position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; height: 100%; transform: translateX(-50%); pointer-events: none; }
+.hero-grid {
+  position: relative;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: var(--s5);
+}
+.hero h1 {
+  grid-column: 1 / span 10;
+  font-family: var(--f-name);
+  font-size: clamp(44px, 8.4vw, 112px); font-weight: 700; letter-spacing: -0.03em; line-height: 0.98;
+  background: linear-gradient(100deg, #F4F8FF 10%, var(--accent) 55%, var(--sage) 95%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  padding-bottom: 0.08em;
+}
+.hero[dir="rtl"] h1 { font-family: var(--f-fa); letter-spacing: 0; line-height: 1.3; font-weight: 800; background: linear-gradient(260deg, #F4F8FF 10%, var(--accent) 55%, var(--sage) 95%); -webkit-background-clip: text; background-clip: text; }
+.hero .lede { grid-column: 1 / span 7; font-size: 21px; line-height: 1.55; max-width: 36ch; color: #C9D3E3; }
+.hero[dir="rtl"] .lede { font-family: var(--f-fa); font-size: 21px; line-height: 1.9; }
+.hero .side { grid-column: 9 / span 4; align-self: end; display: grid; gap: var(--s3); }
+.status { font-family: var(--f-display); font-size: 15px; color: var(--on-hero-muted); }
+.hero[dir="rtl"] .status { font-family: var(--f-fa); }
+.status strong { color: var(--on-hero-strong); font-weight: 600; display: block; font-size: 17px; }
+.swap-text { transition: opacity .22s ease, transform .22s ease; }
+.swapping .swap-text { opacity: 0; transform: translateY(6px); }
+
+.dir-toggle { display: grid; gap: var(--s2); }
+.seg {
+  display: inline-flex; padding: 3px; border-radius: 999px; background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18); width: max-content; max-width: 100%;
+}
+.seg button {
+  font: 600 15px/1 var(--f-display); color: var(--on-hero-muted); background: transparent; border: 0;
+  padding: 10px 16px; border-radius: 999px; cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--on-hero); color: var(--hero); }
+.hero :focus-visible { outline-color: var(--on-hero-strong); }
+.seg button.fa { font-family: var(--f-fa); font-weight: 500; }
+.hint { font-family: var(--f-display); font-size: 14px; color: var(--on-hero-muted); max-width: 32ch; line-height: 1.45; }
+
+@media (max-width: 820px) {
+  .hero h1, .hero .lede, .hero .side { grid-column: 1 / -1; }
+}
+
+/* ---------- sections ---------- */
+section.block { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: var(--s5); padding-block: var(--s7) 0; }
+.block > header { align-self: start; padding-top: 10px; }
+.block > header h2 { font-size: 14px; font-weight: 500; letter-spacing: 0.02em; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+.block > header h2::before { content: ""; width: 8px; height: 8px; background: var(--accent); transform: rotate(45deg); flex: none; box-shadow: 0 0 10px var(--accent); }
+.block > .body { min-width: 0; display: grid; gap: var(--s5); }
+@media (max-width: 820px) { section.block { grid-template-columns: 1fr; gap: var(--s3); padding-block: var(--s6) 0; } .block > header h2 { position: static; } }
+
+.big { font-family: var(--f-display); font-size: clamp(26px, 3.3vw, 38px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.18; max-width: 26ch; }
+.prose { max-width: var(--measure); color: var(--ink); }
+.prose + .prose { margin-top: var(--s3); }
+.muted { color: var(--muted); }
+
+/* research interests as a mapping */
+.map { border-top: 2px solid var(--rule); }
+.map-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s4);
+  padding-block: var(--s4); border-bottom: 1px solid var(--line);
+}
+.map-row:not(.map-head) { transition: background .15s ease; }
+.map-row:not(.map-head):hover { background: var(--accent-soft); box-shadow: -12px 0 0 var(--accent-soft), 12px 0 0 var(--accent-soft); }
+.map-row h3 { font-size: 21px; font-weight: 600; letter-spacing: -0.01em; }
+.map-row p { color: var(--muted); font-size: 17px; }
+.map-head { font-family: var(--f-display); font-size: 14px; color: var(--muted); padding-block: var(--s2); border-bottom: 1px solid var(--line); }
+@media (max-width: 640px) { .map-row, .map-head { grid-template-columns: 1fr; gap: var(--s2); } .map-head span:last-child { display: none; } }
+
+/* ---------- state demo ---------- */
+.lab {
+  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)); border: 1px solid var(--line); border-radius: 16px;
+  box-shadow: var(--glow);
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  overflow: hidden;
+}
+@media (max-width: 860px) { .lab { grid-template-columns: 1fr; } }
+.lab-controls { padding: var(--s4); display: grid; gap: var(--s4); align-content: start; border-right: 1px solid var(--line); }
+@media (max-width: 860px) { .lab-controls { border-right: 0; border-bottom: 1px solid var(--line); } }
+.lab h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.015em; }
+.lab .cap { font-family: var(--f-display); font-size: 14px; color: var(--muted); }
+.states { display: grid; gap: 2px; }
+.states button {
+  display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 12px; align-items: center;
+  text-align: left; width: 100%; padding: 12px 14px; border-radius: 8px;
+  font: 500 16px/1.3 var(--f-display); color: var(--ink); background: transparent; border: 1px solid transparent; cursor: pointer;
+}
+.states button:hover { background: var(--accent-soft); }
+.states button[aria-selected="true"] { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 35%, transparent); }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+.dot.d-default { background: var(--muted); }
+.dot.d-error { background: var(--bad); }
+.dot.d-locked { background: var(--warn); }
+.dot.d-done { background: var(--ok); }
+.note { border-left: 2px solid var(--accent); padding-left: var(--s3); font-size: 17px; min-height: 5.2em; }
+.note strong { font-family: var(--f-display); font-weight: 600; display: block; font-size: 14px; color: var(--accent); margin-bottom: 2px; }
+
+.stage {
+  padding: var(--s5) var(--s4);
+  display: grid; place-items: center;
+  background-color: var(--accent-soft);
+  background-image: radial-gradient(color-mix(in srgb, var(--accent) 18%, transparent) 1px, transparent 1px); background-size: 16px 16px;
+}
+.phone {
+  width: 100%; max-width: 330px; background: var(--bg); border: 1px solid var(--line); border-radius: 28px;
+  padding: 22px 20px 26px; display: grid; gap: 18px;
+  box-shadow: 0 1px 0 var(--line), 0 18px 40px -24px rgba(127, 227, 242, 0.25);
+  font-family: var(--f-display);
+}
+.phone[dir="rtl"] { font-family: var(--f-fa); }
+.phone-top { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); }
+.lang { font: 600 12px/1 var(--f-display); border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 6px 10px; cursor: pointer; }
+.phone h4 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+.phone[dir="rtl"] h4 { letter-spacing: 0; }
+.field { display: grid; gap: 6px; }
+.field label { font-size: 14px; font-weight: 600; }
+.input {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  height: 48px; padding: 0 14px; border-radius: 10px; background: var(--surface);
+  border: 1.5px solid var(--line); font-size: 18px; letter-spacing: 0.2em; color: var(--ink);
+  transition: border-color .2s ease;
+}
+.input.is-error { border-color: var(--bad); }
+.input.is-locked { border-color: var(--line); color: var(--muted); background: transparent; }
+.input.is-done { border-color: var(--ok); }
+.msg { font-size: 14px; line-height: 1.5; min-height: 3em; color: var(--muted); }
+.phone[dir="rtl"] .msg { line-height: 1.8; }
+.msg.is-error { color: var(--bad); }
+.msg.is-locked { color: var(--warn); }
+.msg.is-done { color: var(--ok); }
+.cta {
+  height: 48px; border-radius: 10px; border: 0; font: 600 16px/1 inherit; font-family: inherit;
+  background: var(--accent); color: var(--bg); cursor: pointer;
+}
+.cta.secondary { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+.attempts { display: flex; gap: 6px; }
+.attempts i { width: 22px; height: 4px; border-radius: 2px; background: var(--line); }
+.attempts i.used { background: var(--bad); }
+
+/* ---------- token demo ---------- */
+.tokens { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--glow); }
+@media (max-width: 860px) { .tokens { grid-template-columns: 1fr; } }
+.t-controls { padding: var(--s4); display: grid; gap: var(--s4); align-content: start; border-right: 1px solid var(--line); }
+@media (max-width: 860px) { .t-controls { border-right: 0; border-bottom: 1px solid var(--line); } }
+.ctrl { display: grid; gap: var(--s2); }
+.ctrl label, .ctrl .lbl { font-family: var(--f-display); font-size: 15px; font-weight: 600; display: flex; justify-content: space-between; gap: 12px; }
+.ctrl output { font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums; }
+input[type="range"] { width: 100%; accent-color: var(--accent); }
+.tok-list { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; font-family: var(--f-display); font-size: 14px; font-variant-numeric: tabular-nums; padding-top: var(--s3); border-top: 1px solid var(--line); }
+.tok-list dt { color: var(--muted); }
+.tok-list dd { margin: 0; }
+.tok-list .bar { display: inline-block; height: 6px; background: linear-gradient(90deg, var(--accent), var(--sage)); box-shadow: 0 0 8px rgba(127,227,242,.4); border-radius: 1px; vertical-align: middle; margin-right: 8px; transition: width .2s ease; }
+
+.t-stage { padding: var(--s5) var(--s4); display: grid; place-items: center; background: var(--sage-soft); }
+.pay {
+  --u: 8px; --r: 12px; --t: 1.2;
+  width: 100%; max-width: 340px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r); padding: calc(var(--u) * 3); display: grid; gap: calc(var(--u) * 2);
+  font-family: var(--f-display); transition: all .2s ease;
+}
+.pay .k { font-size: 14px; color: var(--muted); }
+.pay .amt { font-size: calc(16px * var(--t) * var(--t) * var(--t)); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.pay .to { font-size: calc(16px * var(--t)); font-weight: 600; }
+.pay .rowx { display: flex; justify-content: space-between; gap: var(--u); font-size: 15px; padding-block: var(--u); border-top: 1px solid var(--line); }
+.pay .rowx span:first-child { color: var(--muted); }
+.pay .btns { display: grid; grid-template-columns: 1fr 1fr; gap: var(--u); }
+.pay button { font: 600 15px/1 var(--f-display); padding: calc(var(--u) * 1.75) var(--u); border-radius: calc(var(--r) * 0.66); border: 1.5px solid var(--accent); cursor: pointer; }
+.pay .p1 { background: var(--accent); color: var(--bg); }
+.pay .p2 { background: transparent; color: var(--accent); }
+.disclaim { font-family: var(--f-display); font-size: 14px; color: var(--muted); max-width: var(--measure); }
+
+/* ---------- process stepper ---------- */
+.steps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 2px solid var(--rule); }
+.steps button {
+  text-align: left; background: transparent; border: 0; border-bottom: 2px solid transparent; cursor: pointer;
+  padding: 14px 10px 14px 0; font: 600 16px/1.2 var(--f-display); color: var(--muted);
+  display: grid; gap: 4px;
+}
+.steps button small { font-weight: 500; font-size: 13px; font-variant-numeric: tabular-nums; }
+.steps button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); border-bottom-width: 2px; box-shadow: 0 6px 14px -8px var(--accent); }
+.steps button:hover { color: var(--ink); }
+@media (max-width: 700px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.step-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s4); padding-top: var(--s4); }
+@media (max-width: 700px) { .step-panel { grid-template-columns: 1fr; } }
+.step-panel h3 { font-size: 24px; font-weight: 700; letter-spacing: -0.015em; }
+.step-panel ul { margin: 0; padding-left: 1.1em; color: var(--muted); }
+.step-panel li { padding-left: 4px; }
+
+/* ---------- timeline ---------- */
+.tl { list-style: none; margin: 0; padding: 0; display: grid; }
+.tl li { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: var(--s4); padding-block: var(--s4); border-top: 1px solid var(--line); }
+.tl li:first-child { border-top: 2px solid var(--rule); }
+.tl time { font-family: var(--f-display); font-size: 15px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 3px; }
+.tl h3 { font-size: 21px; font-weight: 600; letter-spacing: -0.01em; }
+.tl .org { font-family: var(--f-display); color: var(--muted); font-size: 16px; margin-top: 2px; }
+.tl p.d { margin-top: var(--s2); font-size: 17px; max-width: var(--measure); }
+.kind { font-family: var(--f-display); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: var(--sage-soft); color: var(--sage); border: 1px solid rgba(180,156,255,.25); vertical-align: 3px; margin-left: 8px; white-space: nowrap; }
+.kind.edu { background: var(--accent-soft); color: var(--accent); border-color: rgba(127,227,242,.25); }
+@media (max-width: 640px) { .tl li { grid-template-columns: 1fr; gap: 4px; } }
+
+/* ---------- skills ---------- */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s4) var(--s5); }
+@media (max-width: 640px) { .skills { grid-template-columns: 1fr; } }
+.skills h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+.skills p { color: var(--muted); font-size: 17px; }
+
+/* ---------- contact ---------- */
+.contact { display: grid; gap: var(--s4); }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3); }
+.mail .addr { font-family: var(--f-display); font-size: clamp(22px, 3.4vw, 34px); font-weight: 600; color: var(--accent); text-shadow: 0 0 24px rgba(127,227,242,.35); letter-spacing: -0.02em; overflow-wrap: anywhere; user-select: all; }
+.btn {
+  font: 600 15px/1 var(--f-display); padding: 12px 16px; border-radius: 8px; cursor: pointer;
+  border: 1.5px solid var(--accent); background: var(--accent); color: var(--bg);
+}
+.btn:hover { background: transparent; color: var(--accent); box-shadow: 0 0 18px rgba(127,227,242,.35); }
+.links { display: flex; gap: var(--s4); flex-wrap: wrap; font-family: var(--f-display); }
+
+footer.foot { margin-top: var(--s7); padding-top: var(--s4); border-top: 1px solid var(--line); font-family: var(--f-display); font-size: 14px; color: var(--muted); display: flex; justify-content: space-between; gap: var(--s3); flex-wrap: wrap; }
+.foot .fa { font-size: 15px; }
+</style>
+
+<div class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">Fatemeh Soheily</a>
+    <nav aria-label="Sections">
+      <a href="#research">Research</a>
+      <a href="#work">Work</a>
+      <a href="#systems">Design systems</a>
+      <a href="#healo">Case study</a>
+      <a href="#path">Path</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap" id="top">
+
+  <!-- HERO -->
+  <div class="hero" id="hero" dir="ltr" lang="en">
+    <canvas id="field" aria-hidden="true"></canvas>
+    <div class="hero-grid">
+      <h1 class="swap-text" data-en="Fatemeh Soheily" data-fa="فاطمه سهیلی">Fatemeh Soheily</h1>
+      <p class="lede swap-text"
+         data-en="Product designer in digital banking. I design the moments where people trust an interface with their money, and the systems that keep those moments consistent."
+         data-fa="طراح محصول در بانکداری دیجیتال. لحظه‌هایی را طراحی می‌کنم که مردم پول‌شان را به یک رابط کاربری می‌سپارند، و سیستم‌هایی که این لحظه‌ها را یکدست نگه می‌دارند.">
+        Product designer in digital banking. I design the moments where people trust an interface with their money, and the systems that keep those moments consistent.
+      </p>
+      <div class="side">
+        <p class="status swap-text"
+           data-en="&lt;strong&gt;Applying for Fall 2027&lt;/strong&gt;Research master's in Human-Computer Interaction"
+           data-fa="&lt;strong&gt;متقاضی پاییز ۲۰۲۷&lt;/strong&gt;کارشناسی ارشد پژوهشی در تعامل انسان و کامپیوتر">
+          <strong>Applying for Fall 2027</strong>Research master's in Human-Computer Interaction
+        </p>
+        <div class="dir-toggle">
+          <div class="seg" role="group" aria-label="Reading direction">
+            <button type="button" id="dir-en" aria-pressed="true">English</button>
+            <button type="button" id="dir-fa" class="fa" aria-pressed="false" lang="fa">فارسی</button>
+          </div>
+          <p class="hint">Most of my product work is in Persian, which reads right to left. Switch languages to see this layout mirror.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESEARCH -->
+  <section class="block" id="research">
+    <header><h2>Research interests</h2></header>
+    <div class="body">
+      <p class="big">I want to study why people trust, misread, or abandon the interfaces that handle their money and identity.</p>
+      <div>
+        <div class="map-head map-row" style="padding-block: 8px;"><span>Question I want to research</span><span>Where it comes from</span></div>
+        <div class="map-row">
+          <h3>Trust and decision-making in digital finance and e-commerce</h3>
+          <p>Two years designing payments and lending flows at Bajet, and a master's in E-Commerce.</p>
+        </div>
+        <div class="map-row">
+          <h3>Usable security in login and account recovery</h3>
+          <p>Designing onboarding, login, and password recovery, where a confusing error can lock someone out of their bank.</p>
+        </div>
+        <div class="map-row">
+          <h3>Right-to-left and cross-cultural interface design</h3>
+          <p>Writing Persian UX copy and designing RTL interfaces, where most design tools and patterns assume left-to-right.</p>
+        </div>
+        <div class="map-row">
+          <h3>Design systems and human-AI collaboration in design</h3>
+          <p>Building the Bon design system, and using AI tools for ideation, UX copy, and prototyping.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK: states demo -->
+  <section class="block" id="work">
+    <header><h2>Work</h2></header>
+    <div class="body">
+      <div>
+        <p class="big">Bajet, the digital bank of Bank Tejarat</p>
+        <p class="prose muted" style="margin-top: 8px; font-family: var(--f-display); font-size: 16px;">Product Designer, Jun 2024 to present</p>
+      </div>
+      <p class="prose">I contributed to the redesign of the Bajet mobile banking app across Home, Profile, registration, identity verification, payments, and lending. A large part of that work is designing what happens when things go wrong: wrong passwords, failed verification, locked accounts. Each of those moments needs a clear explanation and a way forward.</p>
+
+      <div class="lab" aria-label="Interface states demo">
+        <div class="lab-controls">
+          <div>
+            <h3>One field, four states</h3>
+            <p class="cap" style="margin-top: 6px;">Pick a state to see how the screen responds.</p>
+          </div>
+          <div class="states" role="tablist" aria-label="Login field states">
+            <button role="tab" id="st-default" aria-selected="true" data-state="default"><span class="dot d-default"></span>Default</button>
+            <button role="tab" id="st-error" aria-selected="false" data-state="error"><span class="dot d-error"></span>Wrong password</button>
+            <button role="tab" id="st-locked" aria-selected="false" data-state="locked"><span class="dot d-locked"></span>Too many attempts</button>
+            <button role="tab" id="st-done" aria-selected="false" data-state="done"><span class="dot d-done"></span>Password reset</button>
+          </div>
+          <p class="note" id="note" aria-live="polite"></p>
+        </div>
+        <div class="stage">
+          <div class="phone" id="phone" dir="ltr" lang="en">
+            <div class="phone-top"><span id="ph-bank">Sign in</span><button type="button" class="lang" id="ph-lang" aria-label="Switch demo language">فارسی</button></div>
+            <h4 id="ph-title">Welcome back</h4>
+            <div class="field">
+              <label for="ph-input" id="ph-label">Password</label>
+              <div class="input" id="ph-input" role="textbox" aria-readonly="true" tabindex="-1"><span id="ph-dots">••••••••</span><span class="attempts" id="ph-att" aria-hidden="true"><i></i><i></i><i></i></span></div>
+              <p class="msg" id="ph-msg"></p>
+            </div>
+            <button type="button" class="cta" id="ph-cta">Sign in</button>
+          </div>
+        </div>
+      </div>
+      <p class="disclaim">An illustrative sketch of the kind of state design I do, built for this page. It is not a Bajet production screen.</p>
+    </div>
+  </section>
+
+  <!-- DESIGN SYSTEMS: token demo -->
+  <section class="block" id="systems">
+    <header><h2>Design systems</h2></header>
+    <div class="body">
+      <p class="big">Bon, the design system behind Bajet</p>
+      <p class="prose">I designed and built Bon from the foundations up: design tokens for color, typography, and spacing, then a library of reusable components with variants and usage guidelines. A design system turns hundreds of small decisions into a few named values, so a change in one place carries through every screen.</p>
+      <p class="prose">Try it below. Each control changes one token, and the whole component follows.</p>
+
+      <div class="tokens">
+        <div class="t-controls">
+          <div class="ctrl">
+            <label for="tk-u">Spacing unit <output id="o-u">8 px</output></label>
+            <input type="range" id="tk-u" min="4" max="12" step="2" value="8">
+          </div>
+          <div class="ctrl">
+            <label for="tk-r">Corner radius <output id="o-r">12 px</output></label>
+            <input type="range" id="tk-r" min="0" max="24" step="2" value="12">
+          </div>
+          <div class="ctrl">
+            <label for="tk-t">Type scale ratio <output id="o-t">1.200</output></label>
+            <input type="range" id="tk-t" min="1.1" max="1.333" step="0.01" value="1.2">
+          </div>
+          <dl class="tok-list" id="tok-list"></dl>
+        </div>
+        <div class="t-stage">
+          <div class="pay" id="pay">
+            <div><div class="k">Transfer to</div><div class="to">Maryam Ahmadi</div></div>
+            <div><div class="k">Amount</div><div class="amt">2,500,000 IRR</div></div>
+            <div>
+              <div class="rowx"><span>From</span><span>Checking ••4417</span></div>
+              <div class="rowx"><span>Fee</span><span>Free</span></div>
+            </div>
+            <div class="btns"><button type="button" class="p2">Cancel</button><button type="button" class="p1">Confirm</button></div>
+          </div>
+        </div>
+      </div>
+      <p class="disclaim">The values here are an illustration of how tokens work, not Bon's actual tokens. I also built a second, complete design system independently through Amanj Academy's Design Systems program (Jun 2025 to Sep 2025).</p>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section class="block" id="healo">
+    <header><h2>Case study</h2></header>
+    <div class="body">
+      <div>
+        <p class="big">Dr. Healo, a medical appointment app</p>
+        <p class="prose muted" style="margin-top: 8px; font-family: var(--f-display); font-size: 16px;">User-centered design study, Amanj Academy, Mar 2024 to Jun 2024</p>
+      </div>
+      <p class="prose">A full design process from research question to tested prototype. The steps below are in the order I ran them.</p>
+      <div>
+        <div class="steps" role="tablist" aria-label="Design process steps" id="steps"></div>
+        <div class="step-panel" id="step-panel" role="tabpanel" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATH -->
+  <section class="block" id="path">
+    <header><h2>Path</h2></header>
+    <div class="body">
+      <ol class="tl" reversed>
+        <li>
+          <time>Jun 2024 – Present</time>
+          <div>
+            <h3>Product Designer <span class="kind">Work</span></h3>
+            <div class="org">Bajet, digital banking of Bank Tejarat, Tehran</div>
+            <p class="d">Redesign of the mobile banking app, security flows and error states, the Bon design system, and Persian UX copy, working with product and engineering teams.</p>
+          </div>
+        </li>
+        <li>
+          <time>Sep 2023 – Feb 2027</time>
+          <div>
+            <h3>M.Sc. in E-Commerce <span class="kind edu">Education</span></h3>
+            <div class="org">Islamic Azad University, Science and Research Branch, Tehran</div>
+            <p class="d">Completed part-time while working full-time as a product designer. Expected completion February 2027.</p>
+          </div>
+        </li>
+        <li>
+          <time>Jan 2024 – May 2024</time>
+          <div>
+            <h3>Web Designer <span class="kind">Work</span></h3>
+            <div class="org">Persianaweb, Tehran</div>
+            <p class="d">Designed and built client websites, structuring information architecture and visual hierarchy for clear navigation.</p>
+          </div>
+        </li>
+        <li>
+          <time>Jul 2023 – Aug 2023</time>
+          <div>
+            <h3>UI/UX Design <span class="kind edu">Training</span></h3>
+            <div class="org">Tehran Institute of Technology</div>
+          </div>
+        </li>
+        <li>
+          <time>Sep 2018 – Dec 2022</time>
+          <div>
+            <h3>B.Sc. in Computer Engineering <span class="kind edu">Education</span></h3>
+            <div class="org">Islamic Azad University, Central Tehran Branch, Tehran</div>
+            <p class="d">Coursework in data structures and algorithms, object-oriented programming, database systems, operating systems, and computer networks.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="block" id="skills">
+    <header><h2>Skills</h2></header>
+    <div class="body">
+      <div class="skills">
+        <div><h3>HCI research methods</h3><p>User interviews, affinity mapping, personas, competitor analysis, moderated usability testing</p></div>
+        <div><h3>Interaction design</h3><p>User flows, wireframing, prototyping, interface states, error and recovery design, RTL interfaces</p></div>
+        <div><h3>Design systems</h3><p>Design tokens, component libraries and variants, typography, color, spacing, documentation</p></div>
+        <div><h3>Programming</h3><p>Python, C, C++, MATLAB, SQL</p></div>
+        <div><h3>Tools</h3><p>Figma (Auto Layout, components, variants, prototyping), AI-assisted design and prototyping</p></div>
+        <div><h3>Languages</h3><p>Persian (native), English (professional working proficiency)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="block" id="contact">
+    <header><h2>Contact</h2></header>
+    <div class="body contact">
+      <p class="big">I'm looking for a supervisor whose lab studies trust, security, or culture in interface design.</p>
+      <div class="mail">
+        <span class="addr" id="addr">fatemehsoheilly@gmail.com</span>
+        <button type="button" class="btn" id="copy">Copy email</button>
+      </div>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/fatemeh-soheily/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Fatemeh Soheily, Tehran</span>
+    <span class="fa" lang="fa" dir="rtl">فاطمه سهیلی</span>
+  </footer>
+</main>
+
+<script>
+(function () {
+  /* ---------- hero direction toggle ---------- */
+  var hero = document.getElementById('hero');
+  var bEn = document.getElementById('dir-en'), bFa = document.getElementById('dir-fa');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setDir(lang) {
+    if (hero.getAttribute('lang') === lang) return;
+    var apply = function () {
+      hero.setAttribute('lang', lang);
+      hero.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+      hero.querySelectorAll('.swap-text').forEach(function (el) {
+        var v = el.getAttribute('data-' + lang);
+        if (el.classList.contains('status')) el.innerHTML = v; else el.textContent = v;
+      });
+      bEn.setAttribute('aria-pressed', String(lang === 'en'));
+      bFa.setAttribute('aria-pressed', String(lang === 'fa'));
+      hero.classList.remove('swapping');
+    };
+    if (reduce) { apply(); return; }
+    hero.classList.add('swapping');
+    setTimeout(apply, 220);
+  }
+  bEn.addEventListener('click', function () { setDir('en'); });
+  bFa.addEventListener('click', function () { setDir('fa'); });
+
+  /* ---------- hero network field ---------- */
+  (function () {
+    var cv = document.getElementById('field'); if (!cv || !cv.getContext) return;
+    var ctx = cv.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W = 0, H = 0, pts = [], mouse = { x: -9999, y: -9999 }, running = true, raf = 0;
+    function size() {
+      var r = cv.getBoundingClientRect(); W = r.width; H = r.height;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = Math.max(28, Math.min(90, Math.round(W * H / 14000)));
+      pts = [];
+      for (var i = 0; i < n; i++) pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25, c: Math.random() < .5 ? '127,227,242' : '180,156,255' });
+    }
+    function frame(move) {
+      ctx.clearRect(0, 0, W, H);
+      var D = 130;
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        if (move) {
+          var dx = mouse.x - p.x, dy = mouse.y - p.y, d2 = dx * dx + dy * dy;
+          if (d2 < 22000) { p.vx += dx * 0.00003; p.vy += dy * 0.00003; }
+          p.vx *= 0.995; p.vy *= 0.995;
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > W) p.vx *= -1;
+          if (p.y < 0 || p.y > H) p.vy *= -1;
+        }
+        for (var j = i + 1; j < pts.length; j++) {
+          var q = pts[j], ex = p.x - q.x, ey = p.y - q.y, d = Math.sqrt(ex * ex + ey * ey);
+          if (d < D) { ctx.strokeStyle = 'rgba(' + p.c + ',' + (0.16 * (1 - d / D)).toFixed(3) + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); }
+        }
+        ctx.fillStyle = 'rgba(' + p.c + ',0.75)';
+        ctx.beginPath(); ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    function loop() { if (!running) return; frame(true); raf = requestAnimationFrame(loop); }
+    size(); frame(false);
+    window.addEventListener('resize', function () { size(); frame(false); });
+    hero.addEventListener('pointermove', function (e) { var r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+    hero.addEventListener('pointerleave', function () { mouse.x = mouse.y = -9999; });
+    if (reduce) return;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { running = es[0].isIntersecting; cancelAnimationFrame(raf); if (running) loop(); }).observe(hero);
+    } else loop();
+  })();
+
+  /* ---------- interface states demo ---------- */
+  var copy = {
+    en: {
+      bank: 'Sign in', title: 'Welcome back', label: 'Password', toggle: 'فارسی',
+      default: { msg: 'At least 8 characters.', cta: 'Sign in', att: 0 },
+      error:   { msg: 'That password is incorrect. You have 2 attempts left.', cta: 'Try again', att: 1 },
+      locked:  { msg: 'Too many attempts. Try again in 15 minutes, or reset your password now.', cta: 'Reset password', att: 3 },
+      done:    { msg: 'New password saved. Sign in with it now.', cta: 'Sign in', att: 0 }
+    },
+    fa: {
+      bank: 'ورود', title: 'خوش برگشتید', label: 'رمز عبور', toggle: 'EN',
+      default: { msg: 'حداقل ۸ کاراکتر.', cta: 'ورود', att: 0 },
+      error:   { msg: 'رمز عبور اشتباه است. ۲ تلاش دیگر باقی مانده است.', cta: 'تلاش دوباره', att: 1 },
+      locked:  { msg: 'تعداد تلاش‌ها زیاد بود. ۱۵ دقیقه دیگر دوباره امتحان کنید، یا همین حالا رمز را بازیابی کنید.', cta: 'بازیابی رمز عبور', att: 3 },
+      done:    { msg: 'رمز عبور جدید ذخیره شد. اکنون با آن وارد شوید.', cta: 'ورود', att: 0 }
+    }
+  };
+  var notes = {
+    default: ['Set expectations early', 'The rule appears before the first mistake, so nobody has to fail to learn it.'],
+    error:   ['Say what happened and what is left', 'The message names the problem and shows remaining attempts, so the person can choose between retrying and recovering.'],
+    locked:  ['Never a dead end', 'A lockout gives a time to wait and an immediate way out. The main button changes from retry to recovery.'],
+    done:    ['Close the loop', 'Confirm the change in plain words and point to the next step, back into the account.']
+  };
+  var state = 'default', lang = 'en';
+  var phone = document.getElementById('phone');
+  var el = function (id) { return document.getElementById(id); };
+  function renderPhone() {
+    var c = copy[lang], s = c[state];
+    phone.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+    phone.setAttribute('lang', lang);
+    el('ph-bank').textContent = c.bank;
+    el('ph-title').textContent = c.title;
+    el('ph-label').textContent = c.label;
+    el('ph-lang').textContent = c.toggle;
+    el('ph-lang').classList.toggle('fa', lang === 'en');
+    el('ph-msg').textContent = s.msg;
+    el('ph-cta').textContent = s.cta;
+    var cls = state === 'default' ? '' : 'is-' + state;
+    el('ph-input').className = 'input ' + cls;
+    el('ph-msg').className = 'msg ' + cls;
+    el('ph-cta').className = 'cta' + (state === 'locked' ? ' secondary' : '');
+    el('ph-dots').textContent = state === 'locked' ? '— — —' : '••••••••';
+    var bars = el('ph-att').children;
+    for (var i = 0; i < bars.length; i++) bars[i].className = i < s.att ? 'used' : '';
+    el('ph-att').style.visibility = (state === 'error' || state === 'locked') ? 'visible' : 'hidden';
+    var n = notes[state];
+    el('note').innerHTML = '<strong>' + n[0] + '</strong>' + n[1];
+  }
+  document.querySelectorAll('.states button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      state = b.getAttribute('data-state');
+      document.querySelectorAll('.states button').forEach(function (x) { x.setAttribute('aria-selected', String(x === b)); });
+      renderPhone();
+    });
+  });
+  el('ph-lang').addEventListener('click', function () { lang = lang === 'en' ? 'fa' : 'en'; renderPhone(); });
+  /* the phone's own button walks the flow forward */
+  el('ph-cta').addEventListener('click', function () {
+    var next = { default: 'error', error: 'locked', locked: 'done', done: 'default' }[state];
+    var b = document.querySelector('.states button[data-state="' + next + '"]');
+    if (b) b.click();
+  });
+  renderPhone();
+
+  /* ---------- token demo ---------- */
+  var pay = el('pay'), u = el('tk-u'), r = el('tk-r'), t = el('tk-t');
+  function renderTokens() {
+    var uv = +u.value, rv = +r.value, tv = +t.value;
+    pay.style.setProperty('--u', uv + 'px');
+    pay.style.setProperty('--r', rv + 'px');
+    pay.style.setProperty('--t', tv);
+    el('o-u').textContent = uv + ' px';
+    el('o-r').textContent = rv + ' px';
+    el('o-t').textContent = tv.toFixed(3);
+    var rows = [
+      ['space-1', uv], ['space-2', uv * 2], ['space-3', uv * 3],
+      ['radius', rv], ['text-body', 16], ['text-title', Math.round(16 * tv)], ['text-amount', Math.round(16 * tv * tv * tv)]
+    ];
+    el('tok-list').innerHTML = rows.map(function (row) {
+      return '<dt>' + row[0] + '</dt><dd><span class="bar" style="width:' + Math.min(row[1] * 2, 120) + 'px"></span>' + row[1] + ' px</dd>';
+    }).join('');
+  }
+  [u, r, t].forEach(function (x) { x.addEventListener('input', renderTokens); });
+  renderTokens();
+
+  /* ---------- process stepper ---------- */
+  var steps = [
+    ['Plan', 'Research planning', 'Set the research questions and decided who to talk to and how, before designing anything.', ['Research plan and goals', 'Participant criteria']],
+    ['Listen', 'User interviews', 'Interviewed people about how they find and book medical appointments today, and where that breaks down.', ['Interview guide', 'Interview notes']],
+    ['Synthesize', 'Affinity mapping, personas, competitor analysis', 'Grouped interview findings into themes, turned them into personas, and compared how existing apps handle the same problems.', ['Affinity map', 'Personas', 'Competitor analysis']],
+    ['Define', 'MVP definition', 'Chose the smallest set of features that addresses the most important needs from research.', ['MVP scope']],
+    ['Design', 'User flows and wireframes', 'Mapped the booking journey step by step, then wireframed each screen in it.', ['User flows', 'Wireframes']],
+    ['Test', 'Moderated usability testing', 'Watched people complete booking tasks with the prototype and noted where they hesitated or got lost.', ['Test plan and tasks', 'Usability findings']]
+  ];
+  var stepsEl = el('steps'), panel = el('step-panel');
+  steps.forEach(function (s, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('role', 'tab'); b.id = 'step-' + i;
+    b.innerHTML = '<small>Step ' + (i + 1) + '</small>' + s[0];
+    b.addEventListener('click', function () { showStep(i); });
+    stepsEl.appendChild(b);
+  });
+  function showStep(i) {
+    var s = steps[i];
+    stepsEl.querySelectorAll('button').forEach(function (b, j) { b.setAttribute('aria-selected', String(j === i)); });
+    panel.innerHTML = '<div><h3>' + s[1] + '</h3><p class="prose" style="margin-top:8px">' + s[2] + '</p></div>' +
+      '<div><p style="font-family:var(--f-display);font-size:14px;font-weight:600;margin-bottom:6px">Outputs</p><ul>' +
+      s[3].map(function (o) { return '<li>' + o + '</li>'; }).join('') + '</ul></div>';
+  }
+  showStep(0);
+
+  /* ---------- copy email ---------- */
+  var cb = el('copy');
+  cb.addEventListener('click', function () {
+    var text = el('addr').textContent.trim();
+    var done = function () { cb.textContent = 'Copied'; setTimeout(function () { cb.textContent = 'Copy email'; }, 1800); };
+    var fallback = function () {
+      var range = document.createRange(); range.selectNodeContents(el('addr'));
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      cb.textContent = 'Selected, press Ctrl+C';
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+
+  /* ---------- nav highlight ---------- */
+  var links = document.querySelectorAll('.top nav a');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); });
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    ['research', 'work', 'systems', 'healo', 'path', 'contact'].forEach(function (id) { var s = el(id); if (s) io.observe(s); });
+  }
+})();
+</script>
+
+</body></html>
